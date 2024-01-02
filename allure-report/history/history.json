@@ -1,1 +1,1 @@
-{"b9fabd7739b3f59d7979988ac41de21f":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"items":[{"uid":"fa22228700d5506","status":"passed","time":{"start":1704218708424,"stop":1704218743693,"duration":35269}}]}}
+{"b9fabd7739b3f59d7979988ac41de21f":{"statistic":{"failed":0,"broken":1,"skipped":0,"passed":0,"unknown":0,"total":1},"items":[{"uid":"ce5a8b38ef142373","status":"broken","statusDetails":"TypeError: 'NoneType' object is not iterable\n","time":{"start":1704220420304,"stop":1704220439157,"duration":18853}}]}}

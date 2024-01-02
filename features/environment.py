@@ -5,14 +5,17 @@ from selenium.webdriver.firefox.options import  Options as FirefoxOptions
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.wait import WebDriverWait
 from app.application import Application
+import os
+from dotenv.main import load_dotenv
 
 
 def browser_init(context, scenario_name):
     """
     :param context: Behave context
     """
-    bs_user = 'gregrounds_ihN9M2'
-    bs_key = 'AL7h559zLeeEcb66sKE2'
+    load_dotenv()
+    bs_user = os.getenv("bs_user")
+    bs_key = os.getenv("bs_key")
     url = f"http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub"
     browser = 'ChromeOptions'
     if browser == 'ChromeOptions':
