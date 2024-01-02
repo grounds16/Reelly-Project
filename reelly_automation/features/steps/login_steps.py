@@ -10,3 +10,8 @@ def open_login_page(context):
 @when('Login into Reelly')
 def open_login_page(context):
     context.app.login.login()
+
+def click_settings(context):
+    context.app.login.click_settings()
+
+
