@@ -54,9 +54,10 @@ class Base:
         self.driver.find_element(*locator).clear()
 
     def ec_wait_presence_of_element_located(self, *locator):
+        locator = self.find_element(*locator)
         WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located(*locator))
+            EC.visibility_of(locator))
 
-    def ec_wait_text_to_be_present_in_element(self,expected_text, *locator):
+    def ec_wait_text_to_be_present_in_element(self, expected_text, locator):
         WebDriverWait(self.driver, 10).until(
-            EC.text_to_be_present_in_element(*locator), expected_text)
+            EC.text_to_be_present_in_element_value(locator= locator, text_=expected_text))

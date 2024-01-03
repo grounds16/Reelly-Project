@@ -18,12 +18,12 @@ class ProfilePage(Base):
         self.assert_text(self.expected_profile_text, *self.actual_profile_text)
 
     def update_company_text(self):
-        sleep(2)
+        self.ec_wait_text_to_be_present_in_element(expected_text=self.expected_name_text, locator= self.name_field)
         self.clear_text(*self.company_field)
         self.input(self.company_input_text, *self.company_field)
 
     def verify_company_updated_text(self):
-        sleep(2)
+        self.ec_wait_text_to_be_present_in_element(expected_text=self.expected_name_text, locator= self.name_field)
         self.assert_input_text(self.company_input_text,*self.company_field)
 
     def verify_close_and_save_button_enabled(self):
