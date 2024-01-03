@@ -37,6 +37,7 @@ class ProfilePage(Base):
 
     def selects_save_button(self):
         self.click(*self.save_changes)
+        sleep(2)
 
     def clear_company_text(self):
         self.clear_text(*self.company_field)
