@@ -13,13 +13,29 @@ def browser_init(context, scenario_name):
     """
     :param context: Behave context
     """
-    driver_path = ChromeDriverManager().install()
-    service = Service(driver_path)
-    context.driver = webdriver.Chrome(service=service)
+    bs_user = 'gregrounds_ihN9M2'
+    bs_key = 'AL7h559zLeeEcb66sKE2'
+    url = f"http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub"
+    browser = 'ChromeOptions'
+    if browser == 'ChromeOptions':
+        options = ChromeOptions()
+    if browser == 'FirefoxOptions':
+        options = FirefoxOptions()
+    bstack_options = {
+            "os": "Windows",
+            "osVersion": "11",
+            "browserVersion": "latest",
+            "local": "false",
+            "seleniumVersion": "4.14.1",
+            "sessionName": scenario_name
+    }
+    options.set_capability('bstack:options', bstack_options)
+    context.driver = webdriver.Remote(command_executor=url, options=options)
+
+
 
     context.driver.maximize_window()
-
-    context.driver.maximize_window()
+    context.driver.wait = WebDriverWait(context.driver, 10)
     context.driver.implicitly_wait(4)
     context.app = Application(context.driver)
 
