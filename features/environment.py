@@ -52,33 +52,45 @@ def browser_init(context, scenario_name):
 
     #Local Firefox#
     # -------------------------------------------------------------------------#
-    # driver_path = GeckoDriverManager().install()
-    # service = Service(driver_path)
-    # context.driver = webdriver.Firefox(service=service)
+    options = FirefoxOptions()
+    context.driver = webdriver.Firefox(options=options)
 
-    # context.driver.maximize_window()
+    context.driver.maximize_window()
+    context.driver.wait = WebDriverWait(context.driver, 10)
+    context.driver.implicitly_wait(4)
+    context.app = Application(context.driver)
+    # -------------------------------------------------------------------------#
+
+
+    #Local Chrome Headless#
+    # -------------------------------------------------------------------------#
+    # options = ChromeOptions()
+    # options.add_argument("-headless")
+    # options.add_argument("--window-size=1920,1080")
+    # context.driver = webdriver.Chrome(options=options)
+    #
+    #
     # context.driver.wait = WebDriverWait(context.driver, 10)
     # context.driver.implicitly_wait(4)
     # context.app = Application(context.driver)
     # -------------------------------------------------------------------------#
 
-
     #Chrome Mobile Emulator#
     # -------------------------------------------------------------------------#
-    mobile_emulation = {
-        "deviceName": "Nest Hub Max"
-    }
-
-    options = webdriver.ChromeOptions()
-
-    options.add_experimental_option("mobileEmulation", mobile_emulation)
-
-
-    context.driver = webdriver.Chrome(options=options)
-    context.driver.maximize_window()
-    context.driver.wait = WebDriverWait(context.driver, 10)
-    context.driver.implicitly_wait(4)
-    context.app = Application(context.driver)
+    # mobile_emulation = {
+    #     "deviceName": "Nest Hub Max"
+    # }
+    #
+    # options = webdriver.ChromeOptions()
+    #
+    # options.add_experimental_option("mobileEmulation", mobile_emulation)
+    #
+    #
+    # context.driver = webdriver.Chrome(options=options)
+    # context.driver.maximize_window()
+    # context.driver.wait = WebDriverWait(context.driver, 10)
+    # context.driver.implicitly_wait(4)
+    # context.app = Application(context.driver)
     # -------------------------------------------------------------------------#
 
 
